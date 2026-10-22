@@ -3,20 +3,37 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ccascava and maratana <marvin@42.fr>       +#+  +:+       +#+        */
+/*   By: maratana <maratana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/22 12:17:14 by ccascava          #+#    #+#             */
-/*   Updated: 2026/10/22 13:27:45 by ccascava         ###   ########.fr       */
+/*   Updated: 2026/10/22 13:37:09 by maratana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf/ft_printf.h"
-
+#include "lib_ft/libft.h"
 #include "push_swap.h"
 
-int main(void)
+t_list	*init_a(int argc, char **argv)
 {
-    ft_printf("Hello from push_swap!\n");
-    return (0);
+	t_list	*ret;
+	t_list	*new;
+	int		i;
+
+	i = 1;
+	ret = ft_lstnew(argv[i]);
+	i++;
+	while (i < argc)
+	{
+		new = ft_lstnew(argv[i]);
+		ft_lstadd_back(ret, new);
+		i++;
+	}
+	return (ret);
 }
 
+int	main(void)
+{
+	ft_printf("Hello from push_swap!\n");
+	return (0);
+}
