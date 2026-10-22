@@ -10,7 +10,8 @@ LIBFT = $(LIBFT_DIR)/libft.a
 PRINTF = $(PRINTF_DIR)/libftprintf.a
 
 SRCS = push_swap.c \
-	   operation_p1.c
+	   operation_p1.c \
+	   operation_p2.c
 OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)
