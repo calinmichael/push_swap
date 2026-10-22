@@ -6,7 +6,7 @@
 /*   By: maratana <maratana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/22 12:17:14 by ccascava          #+#    #+#             */
-/*   Updated: 2026/10/22 18:07:40 by maratana         ###   ########.fr       */
+/*   Updated: 2026/10/22 20:26:50 by ccascava         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,6 +121,8 @@ void	print_list(t_list *lst)
 int	main(int argc, char **argv)
 {
 	t_list	*a;
+	t_list	*b;
+	int		*n;
 
 	// if (argc < 2)
 	// {
@@ -133,14 +135,22 @@ int	main(int argc, char **argv)
 		return (0);
 	}
 	a = init_a(argc, argv);
+	n = malloc(sizeof(int));
+	if (!n)
+		return (0);
+	*n = 42;
+	b = ft_lstnew(n);
 	if (!a)
 		return (1);
 	ft_printf("Before swap:\n");
 	print_list(a);
+	print_list(b);
 	printf("%i", lstcheck_dupe(a));
+	//swap(&a, 'a');
+	push_b(&a,&b,'a');
 	//printf("%f\n",compute_disorder(a));
-	/*
 	ft_printf("After swap:\n");
-	print_list(a);*/
+	print_list(a);
+	print_list(b);
 	return (0);
 }
