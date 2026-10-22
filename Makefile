@@ -9,7 +9,8 @@ PRINTF_DIR = ./ft_printf
 LIBFT = $(LIBFT_DIR)/libft.a
 PRINTF = $(PRINTF_DIR)/libftprintf.a
 
-SRCS = push_swap.c
+SRCS = push_swap.c \
+	   operation_p1.c
 OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)
