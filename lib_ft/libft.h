@@ -6,7 +6,7 @@
 /*   By: ccascava <ccascava@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/29 13:32:56 by ccascava          #+#    #+#             */
-/*   Updated: 2026/10/22 16:05:09 by ccascava         ###   ########.fr       */
+/*   Updated: 2026/10/07 11:06:16 by ccascava         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,11 @@ void	ft_putnbr_fd(int n, int fd);
 
 typedef struct s_list
 {
-	int				c;
+	void			*content;
 	struct s_list	*next;
 }					t_list;
 
-t_list	*ft_lstnew(int conv);
+t_list	*ft_lstnew(void *content);
 void	ft_lstadd_front(t_list **lst, t_list *new);
 int		ft_lstsize(t_list *lst);
 t_list	*ft_lstlast(t_list *lst);

@@ -6,7 +6,7 @@
 /*   By: maratana <maratana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/22 12:17:14 by ccascava          #+#    #+#             */
-/*   Updated: 2026/10/22 16:08:35 by ccascava         ###   ########.fr       */
+/*   Updated: 2026/10/22 16:25:08 by ccascava         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,15 @@ t_list	*init_a(int argc, char **argv)
 	t_list	*ret;
 	t_list	*new;
 	int		i;
-	int		conv;
+	int		*conv;
 
 	i = 1;
-	conv = ft_atoi(argv[i]);
+	conv = &ft_atoi(argv[i]);
 	ret = ft_lstnew(conv);
 	i++;
 	while (i < argc)
 	{
-		conv = ft_atoi(argv[i]);
+		conv = &ft_atoi(argv[i]);
 		new = ft_lstnew(conv);
 		ft_lstadd_back(&ret, new);
 		i++;
@@ -42,7 +42,7 @@ void	print_list(t_list *lst)
 {
 	while (lst)
 	{
-		ft_printf("%d ", lst->c);
+		ft_printf("%d ", *(*lst)->content);
 		lst = lst->next;
 	}
 	ft_printf("\n");
