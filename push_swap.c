@@ -6,7 +6,7 @@
 /*   By: maratana <maratana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/22 12:17:14 by ccascava          #+#    #+#             */
-/*   Updated: 2026/10/22 13:37:09 by maratana         ###   ########.fr       */
+/*   Updated: 2026/10/22 13:40:18 by maratana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,11 @@ t_list	*init_a(int argc, char **argv)
 	return (ret);
 }
 
-int	main(void)
+int	main(int argc, char **argv)
 {
+	t_list	*a;
+
+	a = init_a(argc, argv);
 	ft_printf("Hello from push_swap!\n");
 	return (0);
 }
