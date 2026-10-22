@@ -1,13 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   put_swap.h                                         :+:      :+:    :+:   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ccascava and maratana <marvin@42.fr>       +#+  +:+       +#+        */
+/*   By: maratana <maratana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/22 12:19:17 by ccascava          #+#    #+#             */
-/*   Updated: 2026/10/22 12:19:37 by ccascava         ###   ########.fr       */
+/*   Updated: 2026/10/22 14:02:59 by maratana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef PUSH_SWAP_H
+#define PUSH_SWAP_H
 
+#include "lib_ft/libft.h"
+
+
+#endif
