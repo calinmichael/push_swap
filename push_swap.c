@@ -6,7 +6,7 @@
 /*   By: maratana <maratana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/22 12:17:14 by ccascava          #+#    #+#             */
-/*   Updated: 2026/10/22 20:26:50 by ccascava         ###   ########.fr       */
+/*   Updated: 2026/10/23 14:42:01 by ccascava         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,30 +14,50 @@
 #include "push_swap.h"
 #include <stdio.h>
 
-//checks for non ints;
-int	check_input(int argc, char **argv)
+char	*check_flag(char **argv, int i)
 {
-	int	i;
-	int	j;
+	char	*flag;
+
+	flag = "--adaptive";
+	if (!ft_strncmp(argv[1], "--simple", 8) || !ft_strncmp(argv[1], "--medium", 8))
+	{
+		flag = argv[1];
+		i++;
+	}
+	else if (!ft_strncmp(argv[1], "--complex", 9) || !ft_strncmp(argv[1], "--adaptive", 10))
+	{
+		flag = argv[1];
+		i++;
+	}
+	return (flag);
+}
+
+//checks for non ints;
+char *check_input(int argc, char **argv)
+{
+	int		i;
+	size_t	j;
+	size_t	arg_len;
+	char	*flag;
 
 	i = 1;
+	flag = check_flag(argv, i);
 	while (i < argc)
 	{
 		j = 0;
-		while (argv[i][j])
+		arg_len = ft_strlen(argv[i]);
+		while (j < arg_len)
 		{
-			if (!((argv[i][j] >= '0' && argv[i][j] <= '9')
-					|| (argv[i][j] == '-')))
+			if (!(argv[i][j] >= '0' && argv[i][j] <= '9'))
 			{
-				write(1, &argv[i][j], 1);
-				write(1, "\n", 1);
-				return (0);
+				if (arg_len >= 2 && !(argv[i][0] == '-'))
+					return (NULL);
 			}
 			j++;
 		}
 		i++;
 	}
-	return (1);
+	return (flag);
 }
 
 // checks duplicates in the list by maratana
@@ -121,36 +141,17 @@ void	print_list(t_list *lst)
 int	main(int argc, char **argv)
 {
 	t_list	*a;
-	t_list	*b;
-	int		*n;
 
-	// if (argc < 2)
-	// {
-	// 	ft_printf("Usage: ./push_swap <numbers...>\n");
-	// 	return (1);
-	// }
+	if (argc <= 2)
+		return (0);
 	if (!check_input(argc, argv))
 	{
 		ft_putstr_fd("Error\n", 2);
 		return (0);
 	}
+	ft_printf("%s", check_input(argc, argv));
 	a = init_a(argc, argv);
-	n = malloc(sizeof(int));
-	if (!n)
-		return (0);
-	*n = 42;
-	b = ft_lstnew(n);
-	if (!a)
-		return (1);
-	ft_printf("Before swap:\n");
-	print_list(a);
-	print_list(b);
-	printf("%i", lstcheck_dupe(a));
-	//swap(&a, 'a');
-	push_b(&a,&b,'a');
+	//printf("%i", lstcheck_dupe(a));
 	//printf("%f\n",compute_disorder(a));
-	ft_printf("After swap:\n");
-	print_list(a);
-	print_list(b);
 	return (0);
 }
