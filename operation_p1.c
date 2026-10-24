@@ -6,7 +6,7 @@
 /*   By: ccascava <ccascava@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/22 15:02:13 by ccascava          #+#    #+#             */
-/*   Updated: 2026/10/24 13:31:11 by ccascava         ###   ########.fr       */
+/*   Updated: 2026/10/24 19:21:48 by ccascava         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	swap_both(t_list **lst_a, t_list **lst_b)
 }
 //pa & pb ccascava
 
-void	push_a(t_list **lst_a, t_list **lst_b, char c)
+void	push_a(t_list **lst_a, t_list **lst_b)
 {
 	t_list	*head_a;
 	t_list	*head_b;
@@ -62,11 +62,10 @@ void	push_a(t_list **lst_a, t_list **lst_b, char c)
 	head_b->next = head_a;
 	*lst_a = head_b;
 	*lst_b = temp;
-	if (c)
-		ft_printf("%s\n", "pa");
+	ft_printf("%s\n", "pa");
 }
 
-void	push_b(t_list **lst_a, t_list **lst_b, char c)
+void	push_b(t_list **lst_a, t_list **lst_b)
 {
 	t_list	*head_a;
 	t_list	*head_b;
@@ -80,6 +79,48 @@ void	push_b(t_list **lst_a, t_list **lst_b, char c)
 	head_a->next = head_b;
 	*lst_b = head_a;
 	*lst_a = temp;
-	if (c)
-		ft_printf("%s\n", "pb");
+	ft_printf("%s\n", "pb");
+}
+
+int	is_sorted(t_list **a)
+{
+	t_list	*temp;
+
+	temp = *a;
+	while (temp->next)
+	{
+		if (*(int *)temp->content > *(int *)temp->next->content)
+			return (0);
+		temp = temp->next;
+	}
+	return (1);
+}
+
+void	bubble_sort(t_list **a, t_list **b)
+{
+	t_list	*temp;
+
+	while (is_sorted(a) == 0)
+	{
+		while (*a)
+		{
+			if ((*a)->next)
+			{
+				temp = (*a)->next;
+				if (*(int *)(*a)->content > *(int *)temp->content)
+					swap(a, 'a');
+			}
+			push_b(a, b);
+		}
+		while (*b)
+		{
+			if ((*b)->next)
+			{
+				temp = (*b)->next;
+				if (*(int *)(*b)->content < *(int *)temp->content)
+					swap(b, 'b');
+			}
+			push_a(a, b);
+		}
+	}
 }

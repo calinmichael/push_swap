@@ -6,7 +6,7 @@
 /*   By: maratana <maratana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/22 12:19:17 by ccascava          #+#    #+#             */
-/*   Updated: 2026/10/24 12:56:38 by ccascava         ###   ########.fr       */
+/*   Updated: 2026/10/24 19:02:18 by ccascava         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,9 @@ char	*check_flag(char **argv, int *i);
 char	*check_input(int argc, char **argv);
 void	swap(t_list **lst, char c);
 void	print_list(t_list *lst_a, t_list *lst_b);
-void	push_a(t_list **lst_a, t_list **lst_b, char c);
-void	push_b(t_list **lst_a, t_list **lst_b, char c);
+void	push_a(t_list **lst_a, t_list **lst_b);
+void	push_b(t_list **lst_a, t_list **lst_b);
+void	bubble_sort(t_list **a, t_list **b);
 void	rotate(t_list **lst, char c);
 void	rotate_both(t_list **lst_a, t_list **lst_b);
 void	rev_rotate(t_list **lst, char c);
