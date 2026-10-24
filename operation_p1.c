@@ -6,7 +6,7 @@
 /*   By: ccascava <ccascava@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/22 15:02:13 by ccascava          #+#    #+#             */
-/*   Updated: 2026/10/23 12:00:54 by ccascava         ###   ########.fr       */
+/*   Updated: 2026/10/24 13:31:11 by ccascava         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ void	swap(t_list **lst, char c)
 		*lst = to_swap;
 	}
 	if (c == 'a')
-		ft_printf("%s", "sa");
+		ft_printf("%s\n", "sa");
 	else if (c == 'b')
-		ft_printf("%s", "sb");
+		ft_printf("%s\n", "sb");
 }
 //ss ccascava
 
@@ -63,7 +63,7 @@ void	push_a(t_list **lst_a, t_list **lst_b, char c)
 	*lst_a = head_b;
 	*lst_b = temp;
 	if (c)
-		ft_printf("%s", "pa");
+		ft_printf("%s\n", "pa");
 }
 
 void	push_b(t_list **lst_a, t_list **lst_b, char c)
@@ -81,5 +81,5 @@ void	push_b(t_list **lst_a, t_list **lst_b, char c)
 	*lst_b = head_a;
 	*lst_a = temp;
 	if (c)
-		ft_printf("%s", "pb");
+		ft_printf("%s\n", "pb");
 }

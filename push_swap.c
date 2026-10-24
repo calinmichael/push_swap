@@ -6,7 +6,7 @@
 /*   By: maratana <maratana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/22 12:17:14 by ccascava          #+#    #+#             */
-/*   Updated: 2026/10/23 14:42:01 by ccascava         ###   ########.fr       */
+/*   Updated: 2026/10/24 13:55:31 by ccascava         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "push_swap.h"
 #include <stdio.h>
 
-char	*check_flag(char **argv, int i)
+char	*check_flag(char **argv, int *i)
 {
 	char	*flag;
 
@@ -22,12 +22,12 @@ char	*check_flag(char **argv, int i)
 	if (!ft_strncmp(argv[1], "--simple", 8) || !ft_strncmp(argv[1], "--medium", 8))
 	{
 		flag = argv[1];
-		i++;
+		(*i)++;
 	}
 	else if (!ft_strncmp(argv[1], "--complex", 9) || !ft_strncmp(argv[1], "--adaptive", 10))
 	{
 		flag = argv[1];
-		i++;
+		(*i)++;
 	}
 	return (flag);
 }
@@ -41,7 +41,7 @@ char *check_input(int argc, char **argv)
 	char	*flag;
 
 	i = 1;
-	flag = check_flag(argv, i);
+	flag = check_flag(argv, &i);
 	while (i < argc)
 	{
 		j = 0;
@@ -80,14 +80,17 @@ int	lstcheck_dupe(t_list *lst)
 }
 
 //inits stack a by maratana
-t_list	*init_a(int argc, char **argv)
+t_list	*init_a(int argc, char **argv, char *flag)
 {
 	t_list	*ret;
 	t_list	*new;
 	int		i;
 	int		*n;
 
-	i = 1;
+	if (argv[1] == flag)
+		i = 2;
+	else
+		i = 1;
 	n = malloc(sizeof(int));
 	if (!n)
 		return (NULL);
@@ -104,6 +107,7 @@ t_list	*init_a(int argc, char **argv)
 	}
 	return (ret);
 }
+
 // double	compute_disorder(t_list *a)
 // {
 // 	double	mistakes;
@@ -128,29 +132,48 @@ t_list	*init_a(int argc, char **argv)
 // 	return (mistakes / pairs);
 // }
 
-void	print_list(t_list *lst)
+void	print_list(t_list *lst_a, t_list *lst_b)
 {
-	while (lst)
+	while (lst_a || lst_b)
 	{
-		ft_printf("%d ", *(int *)lst->content);
-		lst = lst->next;
+		if (lst_a)
+		{
+			ft_printf("%d ", *(int *)lst_a->content);
+			lst_a = lst_a->next;
+		}
+		if (lst_b)
+		{
+			ft_printf("%d", *(int *)lst_b->content);
+			lst_b = lst_b->next;
+		}
+		printf("\n");
 	}
-	ft_printf("\n");
+	ft_printf("_ _\n");
+	ft_printf("%c %c\n", 'a', 'b');
 }
 
 int	main(int argc, char **argv)
 {
 	t_list	*a;
+	t_list	*b;
 
-	if (argc <= 2)
+	if (argc < 2)
 		return (0);
 	if (!check_input(argc, argv))
 	{
 		ft_putstr_fd("Error\n", 2);
 		return (0);
 	}
-	ft_printf("%s", check_input(argc, argv));
-	a = init_a(argc, argv);
+	a = init_a(argc, argv, check_input(argc, argv));
+	if (lstcheck_dupe(a))
+	{
+		ft_putstr_fd("Error\n", 2);
+		return (0);
+	}
+	b = NULL;
+	print_list(a, b);
+	push_b(&a, &b, 'b');
+	print_list(a, b);
 	//printf("%i", lstcheck_dupe(a));
 	//printf("%f\n",compute_disorder(a));
 	return (0);

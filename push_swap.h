@@ -6,7 +6,7 @@
 /*   By: maratana <maratana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/22 12:19:17 by ccascava          #+#    #+#             */
-/*   Updated: 2026/10/23 14:37:22 by ccascava         ###   ########.fr       */
+/*   Updated: 2026/10/24 12:56:38 by ccascava         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,11 @@
 # include "ft_printf/ft_printf.h"
 # include "lib_ft/libft.h"
 
-t_list	*init_a(int argc, char **argv);
-char	*check_flag(char **argv, int i);
+t_list	*init_a(int argc, char **argv, char *flag);
+char	*check_flag(char **argv, int *i);
 char	*check_input(int argc, char **argv);
 void	swap(t_list **lst, char c);
+void	print_list(t_list *lst_a, t_list *lst_b);
 void	push_a(t_list **lst_a, t_list **lst_b, char c);
 void	push_b(t_list **lst_a, t_list **lst_b, char c);
 void	rotate(t_list **lst, char c);
