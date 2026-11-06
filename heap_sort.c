@@ -6,7 +6,7 @@
 /*   By: ccascava <ccascava@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/31 14:20:31 by ccascava          #+#    #+#             */
-/*   Updated: 2026/11/03 16:23:34 by ccascava         ###   ########.fr       */
+/*   Updated: 2026/11/06 11:59:29 by ccascava         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,12 +121,53 @@ void	stack_operation(t_list **a, int size)
 {
 	int		*heap;
 	t_list	*temp;
+	int		largest;
+	int		i;
+	int		largest_index;
 	
 	heap = heap_sort(a, size);
-	temp = *a;
-	while (temp)
+	if (heap == NULL)
+		return ;
+	if (size == 1)
 	{
-		ft_printf("%d ", temp->rank);
-		temp = temp->next;
+		free(heap);
+		return ;
 	}
+	else if (size == 2)
+	{
+		temp = *a;
+		if (*(int *)temp->content != heap[0])
+		{
+			swap(a, 'a');
+		}
+		free(heap);
+		return ;
+	}
+	else if (size == 3)
+	{
+		temp = *a;
+		largest_index = 0;
+		i = 1;
+		largest = temp->rank;
+		temp = temp->next;
+		while (temp)
+		{
+			if (temp->rank > largest)
+			{
+				largest = temp->rank;
+				largest_index = i;
+			}
+			temp = temp->next;
+			i++;
+		}
+		if (largest_index == 0)
+			rotate(a, 'a');
+		else if (largest_index == 1)
+			rev_rotate(a, 'a');
+		temp = *a;
+		if (*(int *)temp->content != heap[0])
+			swap(a, 'a');
+		free(heap);
+		return ;
+	}	
 }
