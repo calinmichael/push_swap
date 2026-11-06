@@ -6,7 +6,7 @@
 /*   By: maratana <maratana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/22 12:17:14 by ccascava          #+#    #+#             */
-/*   Updated: 2026/10/30 16:41:33 by maratana         ###   ########.fr       */
+/*   Updated: 2026/11/03 11:47:00 by ccascava         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -186,7 +186,7 @@ int	main(int argc, char **argv)
 	}
 	b = NULL;
 	printf("%f",compute_disorder(a));
-	
+	stack_operation(&a, ft_lstsize(a));
 	//print_list(a, b);
 	//bubble_sort(&a, &b);
 	//printf("%i", lstcheck_dupe(a));

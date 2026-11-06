@@ -6,7 +6,7 @@
 /*   By: ccascava <ccascava@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/31 14:20:31 by ccascava          #+#    #+#             */
-/*   Updated: 2026/11/02 14:13:18 by ccascava         ###   ########.fr       */
+/*   Updated: 2026/11/03 16:23:34 by ccascava         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,6 @@ int	binary_search(int *heap, int find, int size)
 void	assign_rank(t_list **a, int *heap, int size)
 {
 	t_list	*temp;
-	int		index;
 
 	temp = *a;
 	while (temp)
@@ -81,16 +80,18 @@ void	assign_rank(t_list **a, int *heap, int size)
 
 int	*heap_sort(t_list **a, int size)
 {
-	t_list	temp;
+	t_list	*temp;
 	int		holder;
 	int		*heap;
 	int		parent;
 	int		i;
+	int		original_size;
 
 	i = 0;
+	original_size = size;
 	heap = malloc(sizeof(int) * size);
 	if (!heap)
-		return ;
+		return (NULL);
 	temp = *a;
 	while (temp && i < size)
 	{
@@ -112,14 +113,20 @@ int	*heap_sort(t_list **a, int size)
 		size--;
 		heapify(heap, 0, size);
 	}
-	assign_rank(*a, heap, size);
+	assign_rank(a, heap, original_size);
 	return (heap);
 }
 
-void	stack_operation(t_list **a, t_list **b, size)
+void	stack_operation(t_list **a, int size)
 {
-	int	*heap;
+	int		*heap;
+	t_list	*temp;
 	
-	heap = heap_sort(&a, size);
-
+	heap = heap_sort(a, size);
+	temp = *a;
+	while (temp)
+	{
+		ft_printf("%d ", temp->rank);
+		temp = temp->next;
+	}
 }

@@ -11,7 +11,8 @@ PRINTF = $(PRINTF_DIR)/libftprintf.a
 
 SRCS = push_swap.c \
 	   operation_p1.c \
-	   operation_p2.c
+	   operation_p2.c \
+	   heap_sort.c
 OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)
