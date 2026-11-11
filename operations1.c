@@ -6,7 +6,7 @@
 /*   By: maratana <maratana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/22 15:02:13 by ccascava          #+#    #+#             */
-/*   Updated: 2026/11/04 17:37:32 by maratana         ###   ########.fr       */
+/*   Updated: 2026/11/11 15:47:56 by ccascava         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	swap(t_list **lst, char c)
 
 	if (*lst == NULL)
 		return ;
-	count = ft_lstsize(*lst);
+	count = lstsize(*lst);
 	if (count == 1)
 		return ;
 	else

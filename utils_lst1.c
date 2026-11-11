@@ -37,9 +37,18 @@ void	lstadd_back(t_list **lst, t_list *new)
 	last->next = new;
 }
 
-unsigned int	lstsize(t_list *lst)
+void	lstadd_front(t_list **lst, t_list *new)
 {
-	unsigned int	size;
+	t_list	*temp;
+
+	temp = *lst;
+	*lst = new;
+	new->next = temp;
+}
+
+int	lstsize(t_list *lst)
+{
+	int	size;
 
 	size = 0;
 	while (lst != NULL)

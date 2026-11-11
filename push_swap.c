@@ -6,12 +6,13 @@
 /*   By: maratana <maratana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/22 12:17:14 by ccascava          #+#    #+#             */
-/*   Updated: 2026/11/04 17:46:13 by maratana         ###   ########.fr       */
+/*   Updated: 2026/11/11 15:45:42 by ccascava         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf/ft_printf.h"
 #include "utils.h"
+#include "push_swap.h"
 #include "validate.h"
 #include <stdio.h>
 
@@ -160,8 +161,9 @@ int	main(int argc, char **argv)
 	b = NULL;
 	printf("%f\n", compute_disorder(a));
 	
+	complex_sort(&a, &b, lstsize(a));
 	// ft_printf("%d", *(int *)a->content);
-	print_list(a, b);
-	bubble_sort(&a, &b);
-	print_list(a, b);
+	//print_list(a, b);
+	//bubble_sort(&a, &b);
+	//print_list(a, b);
 }
